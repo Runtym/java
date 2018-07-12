@@ -6,7 +6,7 @@ public class Exec{
 		return super.toString();
 	}
 	public static void main(String[] args) {
-		Exec e = new Exec();
-		System.out.println(e);
+		Animal a = new Cat();
+		System.out.println(a);
 	}
 }
