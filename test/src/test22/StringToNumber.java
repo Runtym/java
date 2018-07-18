@@ -23,7 +23,6 @@ public class StringToNumber {
 		while(isOk) {
 			isOk = parseInt();
 		}
-		Integer.getInteger("123");
 		System.out.println("니가 입력한 숫자는 " + num + "이구나");
 		System.out.println("프로그램이 정상종료 되었습니다!");
 	}
