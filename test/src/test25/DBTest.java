@@ -80,6 +80,10 @@ public class DBTest {
 		if(idx!=-1) {
 			removeUser(idx);
 		}
+		HashMap<String,String> searchUser = getUser("김길동");
+		if(searchUser!=null) {
+			removeUser(searchUser);
+		}
 		selectUserList();
 	}
 }
