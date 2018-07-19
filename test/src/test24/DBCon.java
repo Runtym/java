@@ -12,14 +12,14 @@ import java.util.List;
 public class DBCon {
 
 	public static void main(String[] args) {
-		Connection con;
+		Connection con=null;
 		String url = "jdbc:mariadb://localhost:3306/oreo";
 		String id = "root";
 		String pwd="12345678";
 		
 		
 		try {
-			Class.forName("org.mariadb.jdbc.Driver");
+			Class.forName("org.mariadb.jdbc.Driver1");
 			con = DriverManager.getConnection(url, id, pwd);
 			Statement stmt = con.createStatement();
 			String sql = "delete from user_info where uNum=1";
