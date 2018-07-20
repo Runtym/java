@@ -16,6 +16,7 @@ public class DBCon {
 			Class.forName("org.mariadb.jdbc.Driver");
 			DBCon.con = 
 			DriverManager.getConnection(url, userName, passWord);
+			con.setAutoCommit(false);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
