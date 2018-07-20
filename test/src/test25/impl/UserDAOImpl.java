@@ -48,8 +48,34 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public int deleteUserInfo(HashMap<String, String> userInfo) {
-		// TODO Auto-generated method stub
-		return 0;
+		this.con = DBCon.getCon();
+		int result = 0;
+		String sql = "delete from user_info ";
+		if(userInfo!=null) {
+			if(userInfo.get("uiNum")!=null) {
+				sql += " where uiNum=?";
+			}
+		}
+		try(PreparedStatement ps = 
+				this.con.prepareStatement(sql)) {
+			if(userInfo!=null) {
+				if(userInfo.get("uiNum")!=null) {
+					ps.setString(1, userInfo.get("uiNum"));
+				}
+			}
+			result= ps.executeUpdate();
+			this.con.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+			try {
+				this.con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}finally {
+			DBCon.closeCon();
+		}
+		return result;
 	}
 
 	@Override
@@ -65,8 +91,18 @@ public class UserDAOImpl implements UserDAO {
 		this.con = DBCon.getCon();
 		String sql = "select uiNum, uiName, uiAge, uiCredat, uiCretim"
 				+ ", uiDelete, uiEtc from user_info";
+		if(userInfo!=null) {
+			if(userInfo.get("uiName")!=null) {
+				sql += " where uiName=?";
+			}
+		}
 		try {
 			PreparedStatement ps = this.con.prepareStatement(sql);
+			if(userInfo!=null) {
+				if(userInfo.get("uiName")!=null) {
+					ps.setString(1, userInfo.get("uiName"));
+				}
+			}
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				HashMap<String, String> user = new HashMap<String, String>();
