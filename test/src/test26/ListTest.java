@@ -1,15 +1,10 @@
 package test26;
 
-import java.util.ArrayList;
-
 public class ListTest {
 	private String[] strArr;
-
-	
 	public ListTest() {
 		this.strArr = new String[0];
 	}
-	
 	public boolean add(String str) {
 		String[] tmpArr = this.strArr;
 		this.strArr = new String[this.strArr.length+1];
@@ -37,7 +32,6 @@ public class ListTest {
 		}
 		return this.strArr[idx];
 	}
-	
 	public int indexOf(String str) {
 		for(int i=0;i<this.strArr.length;i++) {
 			if(str.equals(this.strArr[i])) {
@@ -53,6 +47,7 @@ public class ListTest {
 		lt.add("cc");
 		System.out.println(lt);
 		System.out.println(lt.indexOf("cc"));
+		System.out.println(lt.indexOf("cc1"));
 		
 	}
 }
