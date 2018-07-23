@@ -37,14 +37,21 @@ public class ListTest {
 		}
 		return this.strArr[idx];
 	}
+	
+	public int indexOf(String str) {
+		for(int i=0;i<this.strArr.length;i++) {
+			if(str.equals(this.strArr[i])) {
+				return i;
+			}
+		}
+		return -1;
+	}
 	public static void main(String[] args) {
 		ListTest lt = new ListTest();
-		System.out.println(lt.size());
-		lt.add("1");
-		lt.add("2");
-		lt.add("3");
-		for(int i=0;i<lt.size();i++) {
-			System.out.println(lt.get(i));
-		}
+		lt.add("abc");
+		lt.add("tt");
+		lt.add("cc");
+		
+		System.out.println(lt.indexOf("cc"));
 	}
 }
