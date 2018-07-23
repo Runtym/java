@@ -40,14 +40,31 @@ public class ListTest {
 		}
 		return -1;
 	}
+	public boolean remove(int idx) {
+		String[] tmp = this.strArr;
+		this.strArr = new String[this.strArr.length-1];
+		for(int i=0;i<idx;i++) {
+			this.strArr[i] = tmp[i];
+		}
+		for(int i=idx+1;i<tmp.length;i++) {
+			this.strArr[i-1] = tmp[i];
+		}
+		return true;
+	}
+	public boolean remove(String str) {
+		int idx = indexOf(str);
+		if(idx==-1) {
+			return false;
+		}
+		return remove(idx);
+	}
 	public static void main(String[] args) {
 		ListTest lt = new ListTest();
 		lt.add("abc");
 		lt.add("tt");
 		lt.add("cc");
+		System.out.println(lt.remove("tt"));
 		System.out.println(lt);
-		System.out.println(lt.indexOf("cc"));
-		System.out.println(lt.indexOf("cc1"));
 		
 	}
 }
