@@ -51,7 +51,8 @@ public class ListTest {
 		lt.add("abc");
 		lt.add("tt");
 		lt.add("cc");
-		
+		System.out.println(lt);
 		System.out.println(lt.indexOf("cc"));
+		
 	}
 }
