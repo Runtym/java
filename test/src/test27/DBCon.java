@@ -6,16 +6,22 @@ import java.sql.SQLException;
 
 public class DBCon {
 	private static final String url
-	="jdbc:mariadb://localhost:3306/oreo";
-	private static final String id = "root";
-	private static final String pwd = "12345678";
-	private static final String driver="org.mariadb.jdbc.Driver";
+	= "jdbc:oracle:thin:@localhost:1521:xe";
+	private static final String id 
+	= "system";
+	private static final String pwd 
+	= "12345678";
+	private static final String driver
+	= "oracle.jdbc.driver.OracleDriver";
 	private static Connection con;
 	
 	private static void open() {
 		try {
 			Class.forName(driver);
 			DBCon.con = DriverManager.getConnection(url, id, pwd);
+			con.createStatement().executeQuery("select * from member");
+
+			System.out.println("오~ 접속 완료~! & 멤버 조회 완료");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
