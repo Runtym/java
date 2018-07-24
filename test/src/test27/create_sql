@@ -1,0 +1,30 @@
+create table member(
+memNum int not null,
+memName varchar2(200) not null,
+memId varchar2(100) not null,
+memPwd varchar2(100) not null,
+memAge int not null,
+memEtc varchar2(2000),
+credat char(8) not null,
+cretim char(6) not null,
+moddat char(8) not null,
+modtim char(8) not null
+);
+
+select * from member;
+create SEQUENCE mem_seq
+start WITH 1
+INCREMENT by 1;
+select mem_seq.nextval from dual;
+select to_char(sysdate,'YYYYmmdd'),
+to_char(sysdate,'HH24miss')
+from dual;
+
+
+insert into member
+values(mem_seq.nextval, '홍길동','hong','hong',
+33,'테스트 데이터',to_char(sysdate,'YYYYmmdd'),
+to_char(sysdate,'HH24miss'),to_char(sysdate,'YYYYmmdd'),
+to_char(sysdate,'HH24miss'));
+
+commit;
